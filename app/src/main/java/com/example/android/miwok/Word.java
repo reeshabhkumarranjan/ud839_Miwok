@@ -7,7 +7,11 @@ public final class Word implements Serializable {
     private String miwokWord;
     private String englishWord;
     private int imageResourceId;
+    private int audioResourceID;
 
+    public int getAudioResourceID() {
+        return audioResourceID;
+    }
 
     public Word(String miwokWord, String englishWord) {
         this.miwokWord = miwokWord;
@@ -18,6 +22,13 @@ public final class Word implements Serializable {
         this.miwokWord = miwokWord;
         this.englishWord = englishWord;
         this.imageResourceId = imageResourceId;
+    }
+
+    public Word(String miwokWord, String englishWord, int imageResourceId, int audioResourceID) {
+        this.miwokWord = miwokWord;
+        this.englishWord = englishWord;
+        this.imageResourceId = imageResourceId;
+        this.audioResourceID=audioResourceID;
     }
 
     public int getImageResourceId() {

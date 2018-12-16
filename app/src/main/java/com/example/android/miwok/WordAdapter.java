@@ -21,6 +21,7 @@ public final class WordAdapter extends ArrayAdapter<Word> {
 
     private ArrayList objects;
     private int tileColorResourceID;
+    private Activity activity;
 //    private static int numbersColorResourceID,familyColorResourceID, colorsColorResourceID,phrasesColorsResourceID;
 //
 //    static {
@@ -35,10 +36,11 @@ public final class WordAdapter extends ArrayAdapter<Word> {
         this.objects=(ArrayList)objects;
     }
 
-    public WordAdapter(@NonNull Context context, int resource, @NonNull List objects, int tileColorResourceID) {
+    public WordAdapter(@NonNull Context context, int resource, @NonNull List objects, int tileColorResourceID, Activity activity) {
         super(context, resource, objects);
         this.objects=(ArrayList)objects;
         this.tileColorResourceID=tileColorResourceID;
+        this.activity=activity;
     }
 
     @NonNull
@@ -58,8 +60,8 @@ public final class WordAdapter extends ArrayAdapter<Word> {
         TextView miwokTextView=wordView.findViewById(R.id.miwokText);
         TextView englishTextView=wordView.findViewById(R.id.englishText);
         ImageView imageView=wordView.findViewById(R.id.image);
-        ImageButton audioPlayButton=(ImageButton)wordView.findViewById(R.id.audioPlayButton);
-//        ListView wordList=(ListView)findViewById(R.id.wordList);
+//        ImageButton audioPlayButton=(ImageButton)wordView.findViewById(R.id.audioPlayButton);
+        ListView wordList=(ListView)activity.findViewById(R.id.wordList);
 
         miwokTextView.setText(word.getMiwokWord());
         englishTextView.setText(word.getEnglishWord());
@@ -86,6 +88,7 @@ public final class WordAdapter extends ArrayAdapter<Word> {
 
         LinearLayout linearLayout=(LinearLayout)wordView.findViewById(R.id.tile);
         linearLayout.setBackgroundResource(tileColorResourceID);
+        wordList.setBackgroundResource(tileColorResourceID);
 //        audioPlayButton.setBackgroundResource(tileColorResourceID);
 //        System.out.println("tileColorResourceID: "+ tileColorResourceID);
         return wordView;
