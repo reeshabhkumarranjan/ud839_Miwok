@@ -39,7 +39,10 @@ public class MainActivity extends AppCompatActivity {
         colors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, ColorsActivity.class);
+                Intent intent=new Intent(MainActivity.this, WordsActivity.class);
+                intent.putExtra("title","Colors");
+                intent.putExtra("list",WordList.getColorsList());
+                intent.putExtra("tileColorResourceID",R.color.category_colors);
                 startActivity(intent);
             }
         });
@@ -47,7 +50,10 @@ public class MainActivity extends AppCompatActivity {
         family.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, FamilyActivity.class);
+                Intent intent=new Intent(MainActivity.this, WordsActivity.class);
+                intent.putExtra("title","Family");
+                intent.putExtra("list",WordList.getFamilyList());
+                intent.putExtra("tileColorResourceID",R.color.category_family);
                 startActivity(intent);
             }
         });
@@ -55,7 +61,10 @@ public class MainActivity extends AppCompatActivity {
         numbers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, NumbersActivity.class);
+                Intent intent=new Intent(MainActivity.this, WordsActivity.class);
+                intent.putExtra("title","Numbers");
+                intent.putExtra("list",WordList.getNumbersList());
+                intent.putExtra("tileColorResourceID",R.color.category_numbers);
                 startActivity(intent);
             }
         });
@@ -63,7 +72,10 @@ public class MainActivity extends AppCompatActivity {
         phrases.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, PhrasesActivity.class);
+                Intent intent=new Intent(MainActivity.this, WordsActivity.class);
+                intent.putExtra("title","Phrases");
+                intent.putExtra("list",WordList.getPhrasesList());
+                intent.putExtra("tileColorResourceID",R.color.category_phrases);
                 startActivity(intent);
             }
         });
