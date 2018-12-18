@@ -6,6 +6,7 @@
     tools:context=".WordsActivity">
 
     <ListView
+        android:drawSelectorOnTop="true"
         android:id="@+id/wordList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
