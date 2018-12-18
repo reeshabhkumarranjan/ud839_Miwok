@@ -61,7 +61,7 @@ public final class WordAdapter extends ArrayAdapter<Word> {
 
         LinearLayout linearLayout = wordView.findViewById(R.id.tile);
         linearLayout.setBackgroundResource(tileColorResourceID);
-        wordList.setBackgroundResource(tileColorResourceID);
+//        wordList.setBackgroundResource(tileColorResourceID);
         return wordView;
     }
 }
