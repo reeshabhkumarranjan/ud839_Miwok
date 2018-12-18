@@ -1,40 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="88dp"
     android:layout_width="match_parent"
+    android:layout_height="88dp"
     android:orientation="horizontal">
 
     <ImageView
+        android:id="@+id/image"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:id="@+id/image"
-        android:padding="8dp"
-        android:background="@color/icon_background"/>
+        android:background="@color/icon_background"
+        android:padding="8dp" />
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
+        android:id="@+id/tile"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="4"
-        android:id="@+id/tile">
+        android:orientation="vertical">
+
         <TextView
+            android:id="@+id/miwokText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/miwokText"
             android:layout_marginTop="16dp"
             android:paddingLeft="16dp"
-            android:textSize="18dp"
-            android:textColor="#FFFFFF"/>
+            android:textColor="#FFFFFF"
+            android:textSize="18dp" />
+
         <TextView
+            android:id="@+id/englishText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/englishText"
             android:paddingLeft="16dp"
+            android:textColor="#FFFFFF"
             android:textSize="18dp"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <ImageView

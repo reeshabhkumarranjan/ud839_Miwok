@@ -27,22 +27,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
 
-        TextView colors,family,numbers,phrases;
-        colors=(TextView)findViewById(R.id.colors);
-        family=(TextView)findViewById(R.id.family);
-        numbers=(TextView)findViewById(R.id.numbers);
-        phrases=(TextView)findViewById(R.id.phrases);
+        TextView colors, family, numbers, phrases;
+        colors = findViewById(R.id.colors);
+        family = findViewById(R.id.family);
+        numbers = findViewById(R.id.numbers);
+        phrases = findViewById(R.id.phrases);
 
         colors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, WordsActivity.class);
-                intent.putExtra("title","Colors");
-                intent.putExtra("list",WordList.getColorsList());
-                intent.putExtra("tileColorResourceID",R.color.category_colors);
+                Intent intent = new Intent(MainActivity.this, WordsActivity.class);
+                intent.putExtra("title", "Colors");
+                intent.putExtra("list", WordList.getColorsList());
+                intent.putExtra("tileColorResourceID", R.color.category_colors);
                 startActivity(intent);
             }
         });
@@ -50,10 +49,10 @@ public class MainActivity extends AppCompatActivity {
         family.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, WordsActivity.class);
-                intent.putExtra("title","Family");
-                intent.putExtra("list",WordList.getFamilyList());
-                intent.putExtra("tileColorResourceID",R.color.category_family);
+                Intent intent = new Intent(MainActivity.this, WordsActivity.class);
+                intent.putExtra("title", "Family");
+                intent.putExtra("list", WordList.getFamilyList());
+                intent.putExtra("tileColorResourceID", R.color.category_family);
                 startActivity(intent);
             }
         });
@@ -61,10 +60,10 @@ public class MainActivity extends AppCompatActivity {
         numbers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, WordsActivity.class);
-                intent.putExtra("title","Numbers");
-                intent.putExtra("list",WordList.getNumbersList());
-                intent.putExtra("tileColorResourceID",R.color.category_numbers);
+                Intent intent = new Intent(MainActivity.this, WordsActivity.class);
+                intent.putExtra("title", "Numbers");
+                intent.putExtra("list", WordList.getNumbersList());
+                intent.putExtra("tileColorResourceID", R.color.category_numbers);
                 startActivity(intent);
             }
         });
@@ -72,17 +71,12 @@ public class MainActivity extends AppCompatActivity {
         phrases.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, WordsActivity.class);
-                intent.putExtra("title","Phrases");
-                intent.putExtra("list",WordList.getPhrasesList());
-                intent.putExtra("tileColorResourceID",R.color.category_phrases);
+                Intent intent = new Intent(MainActivity.this, WordsActivity.class);
+                intent.putExtra("title", "Phrases");
+                intent.putExtra("list", WordList.getPhrasesList());
+                intent.putExtra("tileColorResourceID", R.color.category_phrases);
                 startActivity(intent);
             }
         });
     }
-
-//    public void openNumbersActivity(View view) {
-//        Intent intent=new Intent(this,NumbersActivity.class);
-//        startActivity(intent);
-//    }
 }
