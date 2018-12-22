@@ -17,6 +17,7 @@ package com.example.android.miwok;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -29,54 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        TextView colors, family, numbers, phrases;
-        colors = findViewById(R.id.colors);
-        family = findViewById(R.id.family);
-        numbers = findViewById(R.id.numbers);
-        phrases = findViewById(R.id.phrases);
+        ViewPager viewPager = (ViewPager)findViewById(R.id.mainViewPager);
 
-        colors.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, WordsActivity.class);
-                intent.putExtra("title", "Colors");
-                intent.putExtra("list", WordList.getColorsList());
-                intent.putExtra("tileColorResourceID", R.color.category_colors);
-                startActivity(intent);
-            }
-        });
+        CustomFragmentPageAdapter adapter=new CustomFragmentPageAdapter(getSupportFragmentManager());
 
-        family.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, WordsActivity.class);
-                intent.putExtra("title", "Family");
-                intent.putExtra("list", WordList.getFamilyList());
-                intent.putExtra("tileColorResourceID", R.color.category_family);
-                startActivity(intent);
-            }
-        });
-
-        numbers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, WordsActivity.class);
-                intent.putExtra("title", "Numbers");
-                intent.putExtra("list", WordList.getNumbersList());
-                intent.putExtra("tileColorResourceID", R.color.category_numbers);
-                startActivity(intent);
-            }
-        });
-
-        phrases.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, WordsActivity.class);
-                intent.putExtra("title", "Phrases");
-                intent.putExtra("list", WordList.getPhrasesList());
-                intent.putExtra("tileColorResourceID", R.color.category_phrases);
-                startActivity(intent);
-            }
-        });
+        viewPager.setAdapter(adapter);
     }
 }

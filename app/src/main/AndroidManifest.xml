@@ -29,8 +29,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WordsActivity"
-            android:parentActivityName=".MainActivity"/>
+        <!--<activity android:name=".WordsActivity"-->
+            <!--android:parentActivityName=".MainActivity"/>-->
     </application>
 
 </manifest>

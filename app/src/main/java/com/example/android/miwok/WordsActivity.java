@@ -61,73 +61,73 @@ public class WordsActivity extends AppCompatActivity {
         String title = intent.getStringExtra("title");
         setTitle(title);
         int tileColorResourceID = (Integer) intent.getExtras().get("tileColorResourceID");
-        mediaPlayer = MediaPlayer.create(this, R.raw.color_white);
-        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-        AudioAttributes audioAttributes=new AudioAttributes.Builder()
-                .setUsage(AudioAttributes.USAGE_MEDIA)
-                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                .build();
-
-        audioFocusRequest=new AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT)
-                .setAudioAttributes(audioAttributes)
-                .setAcceptsDelayedFocusGain(true)
-                .setOnAudioFocusChangeListener(new AudioManager.OnAudioFocusChangeListener() {
-                    @Override
-                    public void onAudioFocusChange(int focusChange) {
-
-                        switch (focusChange){
-                            case AudioManager.AUDIOFOCUS_LOSS:
-                                mediaPlayer.stop();
-                                releaseResources();
-                                break;
-                            case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
-                                mediaPlayer.pause();
-                                mediaPlayer.seekTo(0);
-                                break;
-                            case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
-                                mediaPlayer.pause();
-                                mediaPlayer.seekTo(0);
-                                break;
-                            case AudioManager.AUDIOFOCUS_GAIN_TRANSIENT:
-                                mediaPlayer.start();
-                                break;
-                        }
-                    }
-                })
-                .build();
+//        mediaPlayer = MediaPlayer.create(this, R.raw.color_white);
+//        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+//        AudioAttributes audioAttributes=new AudioAttributes.Builder()
+//                .setUsage(AudioAttributes.USAGE_MEDIA)
+//                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+//                .build();
+//
+//        audioFocusRequest=new AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT)
+//                .setAudioAttributes(audioAttributes)
+//                .setAcceptsDelayedFocusGain(true)
+//                .setOnAudioFocusChangeListener(new AudioManager.OnAudioFocusChangeListener() {
+//                    @Override
+//                    public void onAudioFocusChange(int focusChange) {
+//
+//                        switch (focusChange){
+//                            case AudioManager.AUDIOFOCUS_LOSS:
+//                                mediaPlayer.stop();
+//                                releaseResources();
+//                                break;
+//                            case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
+//                                mediaPlayer.pause();
+//                                mediaPlayer.seekTo(0);
+//                                break;
+//                            case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
+//                                mediaPlayer.pause();
+//                                mediaPlayer.seekTo(0);
+//                                break;
+//                            case AudioManager.AUDIOFOCUS_GAIN_TRANSIENT:
+//                                mediaPlayer.start();
+//                                break;
+//                        }
+//                    }
+//                })
+//                .build();
 
         wordArrayList = (ArrayList<Word>) intent.getExtras().get("list");
 
-        WordAdapter wordAdapter = new WordAdapter(this, R.layout.list_item, wordArrayList, tileColorResourceID, this);
-        ListView listView = findViewById(R.id.wordList);
-        listView.setAdapter(wordAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                int focusRequest=audioManager.requestAudioFocus(audioFocusRequest);
-
-                if(focusRequest==AudioManager.AUDIOFOCUS_REQUEST_GRANTED){
-                    TextView textView = view.findViewById(R.id.englishText);
-                    Snackbar snackbar = Snackbar.make(view, "Playing translation of " + textView.getText(), Snackbar.LENGTH_SHORT);
-                    snackbar.show();
-                    Word word = wordArrayList.get(i);
-
-                    mediaPlayer = MediaPlayer.create(WordsActivity.this, word.getAudioResourceID());
-                    mediaPlayer.start();
-                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mediaPlayer) {
-                            releaseResources();
-                        }
-                    });
-                }
-
-                else if (focusRequest==AudioManager.AUDIOFOCUS_REQUEST_FAILED){
-                    Toast.makeText(WordsActivity.this, "Music playback failed", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+//        WordAdapter wordAdapter = new WordAdapter(this, R.layout.list_item, wordArrayList, tileColorResourceID, this);
+//        ListView listView = findViewById(R.id.wordList);
+//        listView.setAdapter(wordAdapter);
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//
+//                int focusRequest=audioManager.requestAudioFocus(audioFocusRequest);
+//
+//                if(focusRequest==AudioManager.AUDIOFOCUS_REQUEST_GRANTED){
+//                    TextView textView = view.findViewById(R.id.englishText);
+//                    Snackbar snackbar = Snackbar.make(view, "Playing translation of " + textView.getText(), Snackbar.LENGTH_SHORT);
+//                    snackbar.show();
+//                    Word word = wordArrayList.get(i);
+//
+//                    mediaPlayer = MediaPlayer.create(WordsActivity.this, word.getAudioResourceID());
+//                    mediaPlayer.start();
+//                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                        @Override
+//                        public void onCompletion(MediaPlayer mediaPlayer) {
+//                            releaseResources();
+//                        }
+//                    });
+//                }
+//
+//                else if (focusRequest==AudioManager.AUDIOFOCUS_REQUEST_FAILED){
+//                    Toast.makeText(WordsActivity.this, "Music playback failed", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
     }
 
     @Override
