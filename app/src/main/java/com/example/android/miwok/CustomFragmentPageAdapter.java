@@ -1,6 +1,7 @@
 package com.example.android.miwok;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -61,6 +62,23 @@ public class CustomFragmentPageAdapter extends FragmentPagerAdapter {
         fragment.setArguments(bundle);
         return fragment;
 //        return null;
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+
+        switch (position){
+            case 0:
+                return "Numbers";
+            case 1:
+                return "Family";
+            case 2:
+                return "Colors";
+            case 3:
+                return "Phrase";
+            default:
+                return "Miwok";
+        }
     }
 
     @Override
